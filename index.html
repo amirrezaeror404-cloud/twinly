@@ -1,13 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Twinly</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+
+body{
+margin:0;
+padding:20px;
+background:#0f172a;
+font-family:Arial,sans-serif;
+color:white;
+text-align:center;
+}
+
+.container{
+max-width:550px;
+margin:auto;
+background:#1e293b;
+padding:20px;
+border-radius:20px;
+}
+
+h1{
+color:#38bdf8;
+}
+
+#user{
+margin-bottom:20px;
+font-size:18px;
+color:#cbd5e1;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+font-size:18px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+background:#38bdf8;
+color:white;
+}
+
+.coming{
+background:#475569;
+}
+
+</style>
 </head>
+
 <body>
+
+<div class="container">
 
 <h1>🧬 Twinly</h1>
 
-<p>Find Your People</p>
+<p id="user">Loading...</p>
+
+<button onclick="alert('Coming Soon')">
+🧬 Group Analysis
+</button>
+
+<button class="coming">
+🌍 Global Twin (Coming Soon)
+</button>
+
+<button onclick="alert('Profile Coming Soon')">
+📊 My Profile
+</button>
+
+</div>
+
+<script>
+
+const tg = window.Telegram.WebApp;
+
+if(tg){
+tg.ready();
+}
+
+let name = "Guest";
+
+if(
+tg &&
+tg.initDataUnsafe &&
+tg.initDataUnsafe.user
+){
+name = tg.initDataUnsafe.user.first_name;
+}
+
+document.getElementById("user").innerHTML =
+"👋 Welcome " + name;
+
+</script>
 
 </body>
 </html>
