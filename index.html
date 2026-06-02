@@ -5,16 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Twinly</title>
 
-<script const SUPABASE_URL = "https://rwikytygsfialubbfehs.supabase.co/rest/v1/";
-const SUPABASE_KEY = "sb_publishable_hOUKlQVLed4aWWs_9EEP8g_ugmrU2_m";
-
-const supabase = window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
 
+<style>
 body{
 margin:0;
 padding:20px;
@@ -32,9 +26,7 @@ padding:20px;
 border-radius:20px;
 }
 
-h1{
-color:#38bdf8;
-}
+h1{ color:#38bdf8; }
 
 #user{
 margin-bottom:20px;
@@ -54,10 +46,7 @@ background:#38bdf8;
 color:white;
 }
 
-.coming{
-background:#475569;
-}
-
+.coming{ background:#475569; }
 </style>
 </head>
 
@@ -84,26 +73,25 @@ background:#475569;
 </div>
 
 <script>
-
+// Telegram init
 const tg = window.Telegram.WebApp;
-
-if(tg){
 tg.ready();
-}
 
+// Supabase init
+const SUPABASE_URL = "https://rwikytygsfialubbfehs.supabase.co";
+const SUPABASE_KEY = "YOUR_ANON_KEY";
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// user from telegram
 let name = "Guest";
 
-if(
-tg &&
-tg.initDataUnsafe &&
-tg.initDataUnsafe.user
-){
-name = tg.initDataUnsafe.user.first_name;
+if (tg?.initDataUnsafe?.user) {
+  name = tg.initDataUnsafe.user.first_name;
 }
 
 document.getElementById("user").innerHTML =
 "👋 Welcome " + name;
-
 </script>
 
 </body>
